@@ -28,9 +28,12 @@ app.get("/api/whoami/", (req, res) => {
   console.log(req.headers)
   console.log(req.rawHeaders)
   let user_agent = req.headers['user-agent']
-  let model= {"ipaddress":"159.20.14.100","language":"en-US,en;q=0.5"}
-  let obj = {val: req.headers.rawHeaders,
-            "software": user_agent}
+  let ipaddress = req.headers['x-forwarded-for'].split(',')[0]
+  let language = req.headers['accept-language']
+  let model= {"ipaddress":"159.20.14.100"}
+  let obj = {"ipaddress": ipaddress,
+             "language": language,
+             "software": user_agent}
   res.json(obj)
 });
 
