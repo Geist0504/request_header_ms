@@ -25,9 +25,13 @@ app.get("/api/hello", function (req, res) {
 });
 
 app.get("/api/whoami/", (req, res) => {
-  console.log(req)
-  let obj = {val: req.body}
-  res.json({})
+  console.log(req.headers)
+  console.log(req.rawHeaders)
+  let user_agent = req.headers['user-agent']
+  let model= {"ipaddress":"159.20.14.100","language":"en-US,en;q=0.5"}
+  let obj = {val: req.headers.rawHeaders,
+            "software": user_agent}
+  res.json(obj)
 });
 
 // listen for requests :)
