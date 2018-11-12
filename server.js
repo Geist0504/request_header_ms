@@ -25,7 +25,9 @@ app.get("/api/hello", function (req, res) {
 });
 
 app.get("/api/whoami/", (req, res) => {
-
+  console.log(req)
+  let obj = {val: req.body}
+  res.json({})
 });
 
 // listen for requests :)
