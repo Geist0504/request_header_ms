@@ -25,8 +25,6 @@ app.get("/api/hello", function (req, res) {
 });
 
 app.get("/api/whoami/", (req, res) => {
-  console.log(req.headers)
-  console.log(req.rawHeaders)
   let user_agent = req.headers['user-agent']
   let ipaddress = req.headers['x-forwarded-for'].split(',')[0]
   let language = req.headers['accept-language']
